@@ -9,10 +9,12 @@ Calculate smoothed series with given window
 import pandas 
 import numpy
 
-def smooth(y, window):
-    n = len(y)
-    y = pandas.DataFrame(y)
-    y = y.rolling(window, center=True, min_periods=1).mean()
-    y_smooth = y.values
-    y_smooth = numpy.reshape(y_smooth, n)
-    return y_smooth
+def smooth(data, window):
+    '''Return the smoothed data with given window box'''
+    n = len(data)
+    data = pandas.DataFrame(data)
+    data = data.rolling(window, center=True, min_periods=1).mean()
+    data_smooth = data.values
+    data_smooth = numpy.reshape(data_smooth, n)
+    
+    return data_smooth
