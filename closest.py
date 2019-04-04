@@ -9,11 +9,11 @@ Find the index in an array which is closest to a number
 
 import numpy
 
-def closest(number, array, lower=None, upper=None):
-    if lower == None and upper == None:
-        idx = (numpy.abs(number-array)).argmin() 
-    elif lower is not None:
+def closest(number, array, lower=False, upper=False):
+    if lower:
         idx = numpy.where(array == array[array <= number].max())[0]
-    elif upper is not None:
+    elif upper:
         idx = numpy.where(array == array[array >= number].min())[0]
+    else:
+        idx = (numpy.abs(number-array)).argmin() 
     return idx
